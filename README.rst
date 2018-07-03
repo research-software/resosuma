@@ -26,6 +26,14 @@ Requirements
 `resosuma` requires Python 3 (tested against 3.4, 3.5, 3.6).
 
 
+Installation
+============
+
+Install resosuma with pip::
+
+    pip install resosuma
+
+
 Usage
 =====
 

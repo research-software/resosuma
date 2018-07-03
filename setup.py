@@ -18,7 +18,7 @@ with open(os.path.join(_here, 'resosuma', 'version.py')) as f:
 setup(
     name='resosuma',
     version=version['__version__'],
-    description=('A module providing mappings of the '
+    description=('A package providing mappings of the '
                  'research software sustainability space.'),
     long_description=long_description,
     author='Stephan Druskat',

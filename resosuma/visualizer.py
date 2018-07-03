@@ -39,18 +39,26 @@ def create(csvpath: str, outputpath: str, format: str):
     for n in graph.get_nodes():
         dot.node(n.get_label(), n.get_label())
     for e in graph.get_activities():
-        if e.get_target() != e.get_source():
-            # If source and target aren't the same, render as per
-            # default, i.e., as a gray edge.
-            dot.edge(e.get_source().get_label(),
-                     e.get_target().get_label(), e.get_label(),
-                     color='gray66')
+        # Edges with a label "are" are rendered differently
+        if e.get_label() != "are":
+            if e.get_target() != e.get_source():
+                # If source and target aren't the same, render as per
+                # default, i.e., as a gray edge.
+                dot.edge(e.get_source().get_label(),
+                         e.get_target().get_label(), e.get_label(),
+                         color='gray66')
     for e in graph.get_activities():
-        if e.get_target() == e.get_source():
-            # If source and target are the same, render so that the
-            # edge and label are more readable, i.e., as a black edge.
+        # Edges with a label "are" are rendered differently
+        if e.get_label() != "are":
+            if e.get_target() == e.get_source():
+                # If source and target are the same, render so that the
+                # edge and label are more readable, i.e., as a black edge.
+                dot.edge(e.get_source().get_label(),
+                         e.get_target().get_label(), e.get_label(),
+                         color='black', rank='max')
+        else:
             dot.edge(e.get_source().get_label(),
                      e.get_target().get_label(), e.get_label(),
-                     color='black', rank='max')
+                     color='firebrick1', rank='max')
     # Render and show in the default viewer
     dot.render(outputpath, view=True)
